@@ -10,7 +10,7 @@ Los elementos del DOM se actualizan empleando un middleware consistente en un ob
 
 Para evitar la repetición de cartas se emula el mecanismo de una pila de descartes a la que mover las cartas empleadas.
 
-## For run the project:
+## Running the project:
 
 ```bash
 python3 -m http.server
@@ -19,3 +19,4 @@ python3 -m http.server
 ## To Do:
 * Expresar las barajas y pilas como objetos.
 * Manejar las pilas como arrays de indices refiriendose a los elementos del diccionadio deckMaps.
+* Proporcionar una función como argumento al constructor de Card para abstraer la forma de conectar las instancias con el DOM.
