@@ -1,22 +1,17 @@
 # Saca una carta
 
-Manejando cartas, barajas y pilas.
+Handling card, decks and piles.
 
-Todo se maneja en base a arrays de elementos y funciones básicas para obtener elementos aleatorios de dichos arrays.
+All is handled basis arrays and basic functions for get random array items.
 
-La baraja se construye por combinación en base a los arrays de palos y valores.
+Deck is builded by combinatio of clubs and ranks.
 
-Los elementos del DOM se actualizan empleando un middleware consistente en un objeto con setters para sus propiedades.
+DOM elements are handled by using a instance of Card who owns setters for club and rank.
 
-Para evitar la repetición de cartas se emula el mecanismo de una pila de descartes a la que mover las cartas empleadas.
+For aboiding repetitions by moving to a discarting pile showed cards.
 
 ## Running the project:
 
 ```bash
 python3 -m http.server
 ```
-
-## To Do:
-* Expresar las barajas y pilas como objetos.
-* Manejar las pilas como arrays de indices refiriendose a los elementos del diccionadio deckMaps.
-* Proporcionar una función como argumento al constructor de Card para abstraer la forma de conectar las instancias con el DOM.
