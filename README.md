@@ -1,3 +1,5 @@
+# DEBES HACER EL README EN INGLES
+
 # Saca una carta
 
 Manejando cartas, barajas y pilas.
