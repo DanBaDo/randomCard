@@ -23,6 +23,16 @@ function combinations(arr1, arr2, idxArr1=0, idxArr2=0, array=[]) {
     return array;
 }
 
+function combinationsIdx(arr1, arr2, idxArr1=0, idxArr2=0, array=[]) {
+    if ( arr1[idxArr1] && arr2[idxArr2] ) {
+        array.push([idxArr1, idxArr2]);
+        combinationsIdx(arr1, arr2, idxArr1, idxArr2+1, array)
+    }
+    else if ( ! arr2[idxArr2] ) combinationsIdx(arr1, arr2, idxArr1+1, 0, array);
+    return array;
+}
+
+
 /**
  * Return a random int smaller than provided.
  * @param {*} int 
@@ -57,14 +67,18 @@ class Card {
     constructor(suit, rank){
         this.HTMLSuit = document.querySelector("span#suit");
         this.HTMLrank = document.querySelector("span#rank");
-        this.HTMLSuit.innerText = this._suit = suit;
-        this.HTMLrank.innerText = this._rank = rank;
+        this._suit = suit;
+        this._rank = rank;
+        this.HTMLSuit.innerText = deckMaps.suits[this._suit]
+        this.HTMLrank.innerText = deckMaps.ranks[this._rank]
     }
     set suit(suit) {
-        this.HTMLSuit.innerText = this._suit = suit;
+        this._suit = suit;
+        this.HTMLSuit.innerText = deckMaps.suits[this._suit]
     }
     set rank(rank) {
-        this.HTMLrank.innerText = this._rank = rank;
+        this._rank = rank;
+        this.HTMLrank.innerText = deckMaps.ranks[this._rank]
     }
     setCard(suit, rank) {
         this.suit = suit;
@@ -87,7 +101,7 @@ function getCardFromDeck(deck,card){
  * @param {Card} card 
  */
 function getCardFromSameClub(ranks,card){
-    card.rank = randomArrayElement(ranks);
+    card.rank = randomArrayIdx(ranks);
 }
 
 /**
@@ -111,7 +125,7 @@ function getCardAndDiscartIt(cardsPile,discartPile,card){
  * Start
  */
 function main () {
-    const deck = combinations(deckMaps.suits,deckMaps.ranks);
+    const deck = combinationsIdx(deckMaps.suits,deckMaps.ranks);
     const cardsPile = [...deck]
     const discartPile = [];
     const card = new Card(...randomArrayElement(deck));
