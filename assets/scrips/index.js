@@ -65,16 +65,20 @@ function randomArrayElement(array) {
  */
 class Card {
     constructor(suit, rank){
-        this.HTMLSuit = document.querySelector("span#suit");
+        this.HTMLSuit = document.querySelectorAll("span.suit");
         this.HTMLrank = document.querySelector("span#rank");
         this._suit = suit;
         this._rank = rank;
-        this.HTMLSuit.innerText = deckMaps.suits[this._suit]
+
+        for (let item of this.HTMLSuit) {
+            item.innerText = deckMaps.suits[this._suit]
+        }
+        //this.HTMLSuit.innerText = deckMaps.suits[this._suit]
         this.HTMLrank.innerText = deckMaps.ranks[this._rank]
     }
     set suit(suit) {
         this._suit = suit;
-        this.HTMLSuit.innerText = deckMaps.suits[this._suit]
+        for (let item of this.HTMLSuit) item.innerText = deckMaps.suits[this._suit]
     }
     set rank(rank) {
         this._rank = rank;
